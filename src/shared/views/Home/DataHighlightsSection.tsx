@@ -1,7 +1,6 @@
 export default function DataHighlightsSection() {
 	return (
-		<section
-			className="flex flex-col items-center justify-center py-20 vh-75">
+		<section className="flex flex-col items-center justify-center py-20 vh-75">
 			<div className="pb-5 text-2xl">
 				We're here to <b>pump</b>{' '}
 				<span role="img" aria-label="Clapping Hands">
@@ -9,22 +8,10 @@ export default function DataHighlightsSection() {
 				</span>{' '}
 				you up!
 			</div>
-			<div className="mb-10 shadow-lg stats stats-vertical lg:stats-horizontal">
-				<div className="stat place-items-center">
-					<div className="stat-title">Total Weight</div>
-					<div className="stat-value">{500}</div>
-					<div className="stat-desc">pounds</div>
-				</div>
-				<div className="stat place-items-center">
-					<div className="stat-title">Total Sets</div>
-					<div className="stat-value">{500}</div>
-					<div className="stat-desc">sets</div>
-				</div>
-				<div className="stat place-items-center">
-					<div className="stat-title">Total Repetitions</div>
-					<div className="stat-value">{500}</div>
-					<div className="stat-desc">reps</div>
-				</div>
+			<div className="mb-10 shadow-lg bg-primary text-primary-content stats stats-vertical lg:stats-horizontal">
+				<StatsCard title="Total Weight" value={500} desc="pounds" />
+				<StatsCard title="Total Sets" value={500} desc="sets" />
+				<StatsCard title="Total Repetitions" value={500} desc="reps" />
 			</div>
 			<div className="pb-5 text-2xl">
 				We're going the <i>distance</i>!{' '}
@@ -32,23 +19,27 @@ export default function DataHighlightsSection() {
 					🏃
 				</span>
 			</div>
-			<div className="shadow-lg stats stats-vertical lg:stats-horizontal">
-				<div className="stat place-items-center">
-					<div className="stat-title">Total Time</div>
-					<div className="stat-value">{500}</div>
-					<div className="stat-desc">minutes</div>
-				</div>
-				<div className="stat place-items-center">
-					<div className="stat-title">Total Distance</div>
-					<div className="stat-value">{500}</div>
-					<div className="stat-desc">miles</div>
-				</div>
-				<div className="stat place-items-center">
-					<div className="stat-title">Total Calories</div>
-					<div className="stat-value">{500}</div>
-					<div className="stat-desc">kcal burned</div>
-				</div>
+			<div className="shadow-lg stats bg-primary text-primary-content stats-vertical lg:stats-horizontal">
+				<StatsCard title="Total Time" value={500} desc="minutes" />
+				<StatsCard title="Total Distance" value={500} desc="miles" />
+				<StatsCard title="Total Calroies" value={500} desc="kcal burned" />
 			</div>
 		</section>
+	);
+}
+
+interface StatsCardProps {
+	title: string;
+	value: number | string;
+	desc: string;
+}
+
+function StatsCard({ title, value, desc }: StatsCardProps) {
+	return (
+		<div className="stat place-items-center">
+			<div className="stat-title text-secondary-content">{title}</div>
+			<div className="stat-value">{value}</div>
+			<div className="stat-desc text-secondary-content">{desc}</div>
+		</div>
 	);
 }
